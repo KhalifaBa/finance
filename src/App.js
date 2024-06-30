@@ -18,11 +18,11 @@ function App() {
       const result = await response.json();
       const data = result.historical;
       setDataAction({
-        labels: data.historical.map((item) => item.date),
+        labels: data.map((item) => item.date),
         datasets: [
           {
             label: "Prix de l'action",
-            data: data.historical.map((item) => item.close),
+            data: data.map((item) => item.close),
             fill: false,
             borderColor: "rgb(75, 192, 192)",
             tension: 0.1,
