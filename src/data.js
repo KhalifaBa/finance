@@ -1,5 +1,5 @@
 export const actions = [
-  { key: "APPL", label: "Apple" },
+  { key: "AAPL", label: "Apple" },
   { key: "GOOG", label: "Google" },
   { key: "AMZN", label: "Amazon" },
   { key: "NVDA", label: "Nvidia" },

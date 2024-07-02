@@ -27,7 +27,7 @@ function App() {
         datasets: [
           {
             label: "Prix de l'action en clôture " + result.symbol,
-            data: data.map((item) => item.close),
+            data: data.map((item) => (item = item.close)),
             fill: true,
             borderColor: "rgb(75, 192, 192)",
             tension: 0.1,
@@ -44,7 +44,7 @@ function App() {
       <main>
         <div className="container">
           <div className="actionSearch"></div>
-          <div className="ml-[50%] mt-[10%]">
+          <div className="ml-[30%] mt-[10%]">
             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
               <SelectButton fonction={handleSelectionChange}></SelectButton>
             </div>
