@@ -1,3 +1,4 @@
+import React from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -12,8 +13,6 @@ import {
   Filler,
 } from "chart.js";
 
-import React from "react";
-
 ChartJS.register(
   ArcElement,
   CategoryScale,
@@ -26,16 +25,17 @@ ChartJS.register(
   Filler
 );
 
-const Graphique = ({ fetchData }) => {
+const Graphique = ({ data }) => {
   return (
     <Line
-      data={fetchData}
+      data={data}
       options={{
         responsive: true,
         plugins: {
           legend: {
             position: "top",
           },
+          tooltip: { mode: "index", intersect: false },
           title: {
             display: true,
             text: "Historique des prix de l'action",

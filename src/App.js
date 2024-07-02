@@ -8,7 +8,7 @@ function App() {
   const handleSelectionChange = (e) => {
     setSelectedAction(e.target.value);
   };
-  const [dataAction, setDataAction] = useState({});
+  const [dataAction, setDataAction] = useState({ datasets: [] });
   useEffect(() => {
     const fetchData = async (selectedAction) => {
       const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${selectedAction}?apikey=HZB3QLhZxheh0su2eAiG2FeoDUKVfald`;
@@ -35,7 +35,7 @@ function App() {
         ],
       });
     };
-    if (selectedAction !== "") {
+    if (selectedAction.length > 0) {
       fetchData(selectedAction);
     }
   }, [selectedAction]);
@@ -50,7 +50,7 @@ function App() {
             </div>
           </div>
           <div className="actionCurve">
-            <Graphique fetchData={dataAction}></Graphique>
+            <Graphique data={dataAction}></Graphique>
           </div>
         </div>
       </main>
