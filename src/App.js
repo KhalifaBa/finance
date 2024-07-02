@@ -1,9 +1,15 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
+import { Select, SelectItem } from "@nextui-org/react";
+import { actions } from "./data";
 import Graphique from "./components/Graphique";
 import SelectButton from "./components/Select";
 import React from "react";
 function App() {
+  const [selectedAction, setSelectedAction] = useState("");
+  const handleSelectionChange = (e) => {
+    setSelectedAction(e.target.value);
+  };
   const [dataAction, setDataAction] = useState({});
   useEffect(() => {
     const fetchData = async (selectedAction) => {
@@ -17,29 +23,34 @@ function App() {
       const response = await fetch(url, options);
       const result = await response.json();
       const data = result.historical;
+      data.reverse();
       setDataAction({
         labels: data.map((item) => item.date),
         datasets: [
           {
-            label: "Prix de l'action",
+            label: "Prix de l'action en clôture " + result.symbol,
             data: data.map((item) => item.close),
-            fill: false,
+            fill: true,
             borderColor: "rgb(75, 192, 192)",
             tension: 0.1,
           },
         ],
       });
     };
-    fetchData("AAPL");
-  }, []);
-
+    if (selectedAction !== "") {
+      fetchData(selectedAction);
+    }
+  }, [selectedAction]);
+  console.log(selectedAction);
   return (
     <div className="App">
       <main>
         <div className="container">
           <div className="actionSearch"></div>
           <div className="ml-[50%] mt-[10%]">
-            <SelectButton fetchData={dataAction}></SelectButton>
+            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+              <SelectButton fonction={handleSelectionChange}></SelectButton>
+            </div>
           </div>
           <div className="actionCurve">
             <Graphique fetchData={dataAction}></Graphique>
