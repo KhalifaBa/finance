@@ -1,15 +1,12 @@
 import React from "react";
-import { useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 import { actions } from "../data";
 
 function SelectButton({ fonction }) {
-  const [selectedAction, setSelectedAction] = useState("");
-
   return (
     <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
       <Select
-        selectedKeys={selectedAction}
+        selectedKeys={actions.key}
         onChange={fonction}
         label="Sélectionnez une action"
         className="max-w-xs"
