@@ -1,7 +1,5 @@
 import "./App.css";
-import { act, useEffect, useState } from "react";
-import { Select, SelectItem } from "@nextui-org/react";
-import { actions } from "./data";
+import { useEffect, useState } from "react";
 import Graphique from "./components/Graphique";
 import SelectButton from "./components/Select";
 import React from "react";
@@ -41,7 +39,6 @@ function App() {
       fetchData(selectedAction);
     }
   }, [selectedAction]);
-  console.log(selectedAction);
   return (
     <div className="App">
       <main>

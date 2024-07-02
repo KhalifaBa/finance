@@ -7,5 +7,6 @@ export const actions = [
   { key: "ADS", label: "Adidas" },
   { key: "TSLA", label: "Tesla" },
   { key: "F", label: "Ford Motors" },
-  { key: "VOW", label: "Volkswagen Group" },
+  { key: "TWTR", label: "Twitter INC" },
+  { key: "META", label: "Meta" },
 ];
